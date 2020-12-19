@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="https://unpkg.com/tailwindcss@1.0/dist/tailwind.min.css">
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.3.5/dist/alpine.js" defer></script>
+</head>
+<body>
+    <nav class="flex flex-row bg-gray-800 h-16 text-white">
+        <!-- Brand/logo -->
+        <a class="text-2xl px-4 py-4" href="/">Flashdeal Hunter</a>
+
+        <!-- Links -->
+        <ul class="px-5 py-5">
+            <li>
+            <a class="text-xl text-gray-400" href="/jdid">JD.id</a>
+            </li>
+        </ul>
+
+    </nav>
+
+<div class="container mx-auto mt-4">
+  {% block body %}
+
+  {% endblock %}
+</div>
+
+</body>
+</html>
