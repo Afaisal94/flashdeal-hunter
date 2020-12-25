@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    BUKALAPAK
+{% endblock %}
+
+{% block body %}
+
+    <center>
+        <h3>{{ title }}</h3>
+    </center>
+    <br><br>
+
+    <!-- Page Features -->
+    <div class="row text-center">
+
+    {% for item in items %}
+
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100">
+          <img class="card-img-top" src="{{ item['images']['large_urls'][0] }}" style="width:250px; height:125px">
+          <div class="card-body">
+            <h5 class="card-title"> {{ item['name'] }} </h5>
+            <p class="card-text"> Harga Normal = {{ item['base_price'] }} </p>
+            <p class="card-text"> Harga Diskon = {{ item['reduced_price'] }} </p>
+            <p class="card-text"> Stock = {{ item['current_stock'] }} </p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary">Find Out More!</a>
+          </div>
+        </div>
+      </div>
+
+    {% endfor %}
+
+    </div>
+    <!-- /.row -->
+
+
+
+{% endblock %}

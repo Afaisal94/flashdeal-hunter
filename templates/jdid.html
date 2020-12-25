@@ -5,17 +5,37 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Waktu Flashdeal : {{ end['startTime'] }} - {{ end['endTime'] }} <br></h1><br><br>
-    {% for i in range(length) %}
-        <img src="https://img20.jd.id/Indonesia/s300x300_/{{ items[i]['skuPic'] }}" style="border:1px solid black">
-        {{ items[i]['skuName'] }} <br>
-        Harga Normal = {{ items[i]['price'] }} <br>
-        Harga Diskon = {{ items[i]['promotionPrice'] }} <br>
-        Stock Flashdeal = {{ items[i]['promotionStock'] }} <br>
-        <a class="h-12 px-6 m-2 text-lg text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800"
-                href="https://www.jd.id/product/{{ items[i]['skuName'].replace('+', ' ').replace('/', ' ').replace('-', '').replace('(', ' ').replace(')', ' ').replace('[', ' ').replace(']', ' ').replace(' ', '-') }}_{{ items[i]['wareId'] }}/{{ items[i]['skuId'] }}.html">Detail</a>
 
-        <br><hr><br>
+    <center>
+        <h3>Waktu Flashdeal <br>{{ end['startTime'] }} - {{ end['endTime'] }}</h3>
+    </center>
+    <br><br>
+
+    <!-- Page Features -->
+    <div class="row text-center">
+
+    {% for i in range(length) %}
+
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100">
+          <img class="card-img-top" src="https://img20.jd.id/Indonesia/s300x300_/{{ items[i]['skuPic'] }}" style="width:250px; height:125px">
+          <div class="card-body">
+            <h5 class="card-title"> {{ items[i]['skuName'] }} </h5>
+            <p class="card-text"> Harga Normal = {{ items[i]['price'] }} </p>
+            <p class="card-text"> Harga Diskon = {{ items[i]['promotionPrice'] }} </p>
+            <p class="card-text"> Stok = {{ items[i]['promotionStock'] }} </p>
+          </div>
+          <div class="card-footer">
+            <a href="https://www.jd.id/product/{{ items[i]['skuName'].replace('+', ' ').replace('/', ' ').replace('-', '').replace('(', ' ').replace(')', ' ').replace('[', ' ').replace(']', ' ').replace(' ', '-') }}_{{ items[i]['wareId'] }}/{{ items[i]['skuId'] }}.html" class="btn btn-primary">Find Out More!</a>
+          </div>
+        </div>
+      </div>
+
     {% endfor %}
+
+    </div>
+    <!-- /.row -->
+
+
 
 {% endblock %}
