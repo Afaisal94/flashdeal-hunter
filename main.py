@@ -49,7 +49,26 @@ def bukalapak():
     items = response['data']
     return render_template('bukalapak.html', items=items, title=title)
 
+@app.route('/shopee')
+def shopee():
+    url = 'https://shopee.co.id/api/v2/flash_sale/flash_sale_get_items'
+    parameter = {
+        'offset': 0,
+        'limit': 43,
+        'sort_soldout': True,
+        'need_personalize': True,
+        'with_dp_items: true': True
+    }
 
+    response = requests.get(url, params=parameter).json()
+    items = response['data']['items']
+    i = 0
+    length = len(items)
+    return render_template('shopee.html', items=items, i=i, length=length, conv_shopee=conv_shopee)
+
+def conv_shopee(value):
+    result = int(str(value)[:-5])
+    return result
 
 if __name__ == '__main__':
     app.run(debug=True)

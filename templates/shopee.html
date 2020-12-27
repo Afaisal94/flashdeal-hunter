@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    SHOPEE
+{% endblock %}
+
+{% block body %}
+
+    <center>
+        <h3>{{ title }}</h3>
+    </center>
+    <br><br>
+
+    <!-- Page Features -->
+    <div class="row text-center">
+
+    {% for i in range(length) %}
+
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100">
+          <img class="card-img-top" src="https://cf.shopee.co.id/file/{{ items[i]['image'] }}" style="width:250px; height:125px">
+          <div class="card-body">
+            <h5 class="card-title"> {{ items[i]['name'] }} </h5>
+            <p class="card-text"> Harga Normal = {{ conv_shopee(items[i]['price_before_discount']) }} </p>
+            <p class="card-text"> Harga Diskon = {{ conv_shopee(items[i]['price']) }} </p>
+            <p class="card-text"> Stock = {{ items[i]['flash_sale_stock'] }} </p>
+          </div>
+          <div class="card-footer">
+            <a href="https://shopee.co.id/{{ items[i]['name'].replace('+', ' ').replace('/', ' ').replace('-', '').replace('(', ' ').replace(')', ' ').replace('[', ' ').replace(']', ' ').replace(' ', '-') }}-i.{{ items[i]['shopid'] }}.{{ items[i]['itemid'] }}" class="btn btn-primary">Find Out More!</a>
+          </div>
+        </div>
+      </div>
+
+    {% endfor %}
+
+    </div>
+    <!-- /.row -->
+
+
+
+{% endblock %}
